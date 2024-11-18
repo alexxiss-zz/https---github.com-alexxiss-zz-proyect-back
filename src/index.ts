@@ -12,7 +12,7 @@ const app = express() // Crear una aplicación de Express
 app.use(express.json())
 app.use(morgan('dev'))
 
-const PORT = process.env.PORT ?? 8000
+const PORT = process.env.PORT ?? 3000
 
 // localhost:8000/api/user
 app.use('/api/user', userRouter)
