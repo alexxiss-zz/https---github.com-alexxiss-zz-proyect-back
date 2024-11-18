@@ -16,6 +16,10 @@ export class CourseService {
   //   return this.userRepository.findUserByEmail(email)
   // }
 
+  public async findAllCoursesAndSessions() {
+    return this.courseRepository.findAllCoursesAndSession()
+  }
+
   public async createCourse(data: Course) {
     return this.courseRepository.createCourse(data)
   }

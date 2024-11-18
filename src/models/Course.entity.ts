@@ -2,14 +2,17 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
+  Relation,
   UpdateDateColumn,
 } from 'typeorm'
+import { Session } from './Session.entity'
 
 @Entity()
 export class Course {
   @PrimaryGeneratedColumn()
-  idcourse: number
+  id: number
 
   @Column({ length: 50, nullable: false })
   title: string
@@ -28,6 +31,11 @@ export class Course {
 
   @Column({ length: 50, nullable: false })
   teacherID: string
+
+  @OneToMany(() => Session, session => session.course, {
+    cascade: ['insert', 'recover'],
+  })
+  sessions: Relation<Session[]>
 
   @CreateDateColumn({ nullable: false })
   createCourse: Date

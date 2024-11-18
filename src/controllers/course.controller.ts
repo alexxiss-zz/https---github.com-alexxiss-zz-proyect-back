@@ -16,6 +16,19 @@ export const getAllCourse = async (_req: Request, res: Response) => {
   }
 }
 
+export const getAllCourseAndSession = async (req: Request, res: Response) => {
+  try {
+    const courses = await courseService.findAllCoursesAndSessions()
+
+    res.status(200).json(courses)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({
+      message: 'Hubo un error en el servidor',
+    })
+  }
+}
+
 export const createCourse = async (req: Request, res: Response) => {
   try {
     const course = await courseService.createCourse(req.body)
