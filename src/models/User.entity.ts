@@ -1,28 +1,23 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
-export class Usuario {
+export class User {
   @PrimaryGeneratedColumn()
   idUser: number
 
-  @Column({ length: 50, nullable: true })
+  @Column({ length: 50, nullable: false })
   nameComplete: string
 
   @Column({ length: 50, nullable: true })
   nameCompleteUser: string
 
-  @Column({ length: 50, nullable: true })
+  @Column({ length: 60, nullable: false, unique: true })
   email: string
 
-  @Column({ length: 50, nullable: true })
+  @Column({ nullable: false })
   password: string
 
-  @CreateDateColumn({ nullable: true })
+  @Column({ nullable: true })
   dateBirth: Date
 
   @Column({ length: 50, nullable: true })
@@ -31,7 +26,7 @@ export class Usuario {
   @Column({ nullable: true })
   DNI: number
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, default: true })
   status: boolean
 
   @Column({ length: 50, nullable: true })

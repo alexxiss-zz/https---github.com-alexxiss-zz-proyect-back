@@ -16,7 +16,7 @@ export class Administrador {
   @Column({ length: 30, nullable: true })
   lastName: string
 
-  @Column({ length: 60, nullable: true })
+  @Column({ length: 60, nullable: true, unique: true })
   email: string
 
   @Column({ length: 20, nullable: true })

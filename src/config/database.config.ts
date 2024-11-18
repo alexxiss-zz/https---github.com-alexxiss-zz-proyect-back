@@ -5,13 +5,14 @@ const ENTITIES_PATH = path.join(__dirname, '..', 'models', '*.entity.{ts,js}')
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
-  username: 'root',
-  password: '123123',
-  host: 'localhost',
-  port: 3306,
-  database: 'recreatecode',
+  host: process.env.MYSQL_HOST,
+  port: Number(process.env.MYSQL_PORT) ?? 3306,
+  username: process.env.MYSQL_USERNAME,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
   entities: [ENTITIES_PATH],
   synchronize: true,
+  logger: 'simple-console',
 })
 
 export const initDatabase = async () => {
