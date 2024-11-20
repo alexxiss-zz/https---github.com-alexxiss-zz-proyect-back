@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Relation,
+} from 'typeorm'
+import { Payment } from './Payment.entity'
 
 @Entity()
 export class User {
@@ -31,4 +38,7 @@ export class User {
 
   @Column({ length: 50, nullable: true })
   plan: string
+
+  @OneToMany(() => Payment, payment => payment.user, { cascade: true })
+  payments: Relation<Payment[]>
 }
